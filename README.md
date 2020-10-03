@@ -118,3 +118,25 @@ QQ群：730929995
 
 #### 开源不易，欢迎大佬赏杯茶。
 [![6](doc/6.png "添加date定时")]()
+
+
+# 使用过程, 由于相对路径的原因, 需要再xiaoniu_cron文件夹内部执行manager.py
+1. 初始化数据库
+sudo /home/q/tujia/Anaconda3-5.3.1/envs/python36/bin/python xiaoniu_cron-master/manage.py db init 
+sudo /home/q/tujia/Anaconda3-5.3.1/envs/python36/bin/python xiaoniu_cron-master/manage.py db upgrade
+2. 启动服务
+sudo /home/q/tujia/Anaconda3-5.3.1/envs/python36/bin/python xiaoniu_cron-master/manage.py runserver
+3. 记得改ip和端口
+
+# 手动创建数据库和数据表
+```text
+(venv) FlaskStudy$ python manage.py shell
+>>> from app import db
+>>> db.create_all()
+几次尝试过后，发现如果在执行db.create_all()前导入我创建的数据库模型，就能正常的创建出表了：
+
+(venv) FlaskStudy$ python manage.py shell
+>>> from app import db
+>>> from app.models import User, Role
+>>> db.create_all()
+```
