@@ -45,7 +45,7 @@ def make_shell_context():
 
 manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
-manager.add_command("runserver", Server("10.2.3.100", port=10080, threaded=True, use_debugger=True))
+manager.add_command("runserver", Server("10.2.3.100", port=10080, threaded=True, use_debugger=False))
 # manager 启动服务
 # manager.add_command("runserver", Server("localhost", port=8080))
 
